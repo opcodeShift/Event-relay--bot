@@ -26,3 +26,5 @@ jobs:
         run: |
           python -m pip install -r requirements.txt
           python -m compileall -q .
+          cd "$RUNNER_TEMP"
+          MASTER_GUILD_ID=1 PYTHONPATH="$GITHUB_WORKSPACE" python -c 'from config import Config; Config.load()'

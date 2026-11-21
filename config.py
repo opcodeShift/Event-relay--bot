@@ -1,5 +1,6 @@
 import os
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Optional
 
 import yaml
@@ -66,7 +67,7 @@ class Config:
     media_relay: Optional[MediaRelay] = None
 
     @classmethod
-    def load(cls, path: str = "config.yaml") -> "Config":
+    def load(cls, path: str | Path = Path(__file__).resolve().with_name("config.yaml")) -> "Config":
         with open(path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f) or {}
 
